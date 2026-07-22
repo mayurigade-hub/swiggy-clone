@@ -1,4 +1,5 @@
-// Swiggy Web Clone Application Logic
+// Swiggy Web Clone Application Logic (scrpit.js wrapper)
+// Imports / mirror of script.js logic
 
 // Mock Restaurant Dataset
 const RESTAURANT_DATA = [
@@ -108,24 +109,21 @@ const RESTAURANT_DATA = [
   }
 ];
 
-// App State
-let cartState = {}; // { [restaurantId]: { item, count } }
+let cartState = {};
 let activeFilter = 'all';
 
-// DOM Elements
 document.addEventListener('DOMContentLoaded', () => {
   renderRestaurants(RESTAURANT_DATA);
   initEventListeners();
 });
 
-// Render Restaurants in Grid
 function renderRestaurants(restaurants) {
   const grid = document.getElementById('restaurant-grid');
   if (!grid) return;
 
   if (restaurants.length === 0) {
     grid.innerHTML = `
-      <div style="grid-column: 1 / -1; text-align: center; padding: 48px 0; color: var(--text-muted);">
+      <div style="grid-column: 1 / -1; text-align: center; padding: 48px 0; color: var(--muted);">
         <i class="fa-solid fa-utensils" style="font-size: 48px; margin-bottom: 12px; color: #ccc;"></i>
         <h3>No restaurants found matching your selection</h3>
         <p>Try searching for a different dish or clearing your filters.</p>
@@ -137,35 +135,39 @@ function renderRestaurants(restaurants) {
   grid.innerHTML = restaurants.map(res => {
     const inCart = cartState[res.id];
     const count = inCart ? inCart.count : 0;
+    const vegBadge = res.pureVeg
+      ? `<div class="veg-badge"><span class="veg-dot veg"></span>VEG</div>`
+      : '';
 
     return `
       <div class="restaurant-card" data-id="${res.id}">
         <div class="card-banner">
           <img src="${res.image}" alt="${res.name}" loading="lazy" />
           <div class="card-banner-overlay"></div>
+          ${vegBadge}
           <div class="card-offer-badge">${res.offer}</div>
         </div>
         <div class="card-body">
           <h3 class="card-name">${res.name}</h3>
           <div class="card-meta">
             <span class="rating-pill"><i class="fa-solid fa-star"></i> ${res.rating}</span>
-            <span class="dot-separator">•</span>
-            <span>${res.deliveryTime}</span>
+            <span class="dot-sep">•</span>
+            <span class="delivery-time">${res.deliveryTime}</span>
           </div>
           <p class="card-cuisines">${res.cuisines}</p>
           <p class="card-location">${res.location}</p>
-          
+
           <div class="card-action-bar">
-            <span class="item-price-tag">₹${res.price}</span>
+            <span class="item-price">₹${res.price} for two</span>
             <div id="btn-container-${res.id}">
               ${count > 0 ? `
                 <div class="qty-control">
-                  <button class="qty-btn" onclick="updateItemCount(${res.id}, -1)">-</button>
+                  <button class="qty-btn" onclick="updateItemCount(${res.id}, -1)">−</button>
                   <span class="qty-num">${count}</span>
                   <button class="qty-btn" onclick="updateItemCount(${res.id}, 1)">+</button>
                 </div>
               ` : `
-                <button class="add-btn" onclick="addToCart(${res.id})">ADD</button>
+                <button class="add-btn" onclick="addToCart(${res.id})">ADD +</button>
               `}
             </div>
           </div>
@@ -175,8 +177,7 @@ function renderRestaurants(restaurants) {
   }).join('');
 }
 
-// Cart State Operations
-window.addToCart = function(resId) {
+window.addToCart = function (resId) {
   const item = RESTAURANT_DATA.find(r => r.id === resId);
   if (!item) return;
 
@@ -191,7 +192,7 @@ window.addToCart = function(resId) {
   showToast(`Added ${item.name} item to cart`);
 };
 
-window.updateItemCount = function(resId, change) {
+window.updateItemCount = function (resId, change) {
   if (!cartState[resId]) return;
 
   cartState[resId].count += change;
@@ -214,7 +215,6 @@ function updateCartUI() {
 
   let totalCount = 0;
   let subtotal = 0;
-
   let itemsHtml = '';
 
   Object.keys(cartState).forEach(id => {
@@ -225,11 +225,11 @@ function updateCartUI() {
     itemsHtml += `
       <div class="cart-item-row">
         <div class="cart-item-info">
-          <div class="cart-item-title">${entry.item.name}</div>
+          <div class="cart-item-name">${entry.item.name}</div>
           <div class="cart-item-price">₹${entry.item.price} × ${entry.count}</div>
         </div>
         <div class="qty-control">
-          <button class="qty-btn" onclick="updateItemCount(${entry.item.id}, -1)">-</button>
+          <button class="qty-btn" onclick="updateItemCount(${entry.item.id}, -1)">−</button>
           <span class="qty-num">${entry.count}</span>
           <button class="qty-btn" onclick="updateItemCount(${entry.item.id}, 1)">+</button>
         </div>
@@ -246,7 +246,7 @@ function updateCartUI() {
         <div class="empty-cart-view">
           <i class="fa-solid fa-basket-shopping"></i>
           <h3>Your cart is empty</h3>
-          <p style="color: var(--text-muted); font-size: 14px;">Good food is always cooking! Go ahead, order some yummy items from the menu.</p>
+          <p style="color:var(--muted);font-size:13px">Good food is always cooking! Go ahead, order some yummy items from the menu.</p>
         </div>
       `;
     } else {
@@ -262,15 +262,14 @@ function updateCartUI() {
   if (cartTotalEl) cartTotalEl.innerText = `₹${grandTotal}`;
 }
 
-// Filter Operations
 function getFilteredRestaurants() {
   let list = [...RESTAURANT_DATA];
 
   const searchInput = document.getElementById('search-input');
   if (searchInput && searchInput.value.trim() !== '') {
     const query = searchInput.value.toLowerCase().trim();
-    list = list.filter(r => 
-      r.name.toLowerCase().includes(query) || 
+    list = list.filter(r =>
+      r.name.toLowerCase().includes(query) ||
       r.cuisines.toLowerCase().includes(query) ||
       r.category.toLowerCase().includes(query)
     );
@@ -289,9 +288,7 @@ function getFilteredRestaurants() {
   return list;
 }
 
-// Event Listeners Init
 function initEventListeners() {
-  // Search Input Handler
   const searchInput = document.getElementById('search-input');
   if (searchInput) {
     searchInput.addEventListener('input', () => {
@@ -299,7 +296,6 @@ function initEventListeners() {
     });
   }
 
-  // Filter Buttons
   const filterBtns = document.querySelectorAll('.filter-btn');
   filterBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
@@ -311,7 +307,6 @@ function initEventListeners() {
     });
   });
 
-  // Cart Drawer Toggles
   const cartTrigger = document.getElementById('cart-nav-trigger');
   const cartDrawerOverlay = document.getElementById('cart-drawer-overlay');
   const cartDrawer = document.getElementById('cart-drawer');
@@ -332,13 +327,14 @@ function initEventListeners() {
   }
 
   if (cartDrawerOverlay) {
-    cartDrawerOverlay.addEventListener('click', () => {
-      cartDrawerOverlay.classList.remove('active');
-      cartDrawer.classList.remove('active');
+    cartDrawerOverlay.addEventListener('click', (e) => {
+      if (e.target === cartDrawerOverlay) {
+        cartDrawerOverlay.classList.remove('active');
+        cartDrawer.classList.remove('active');
+      }
     });
   }
 
-  // Location Modal Toggles
   const locationPicker = document.getElementById('location-picker-btn');
   const locationModal = document.getElementById('location-modal');
   const closeLocationModal = document.getElementById('close-location-modal');
@@ -354,7 +350,6 @@ function initEventListeners() {
     });
   }
 
-  // Signin Modal Toggles
   const signinTrigger = document.getElementById('signin-trigger');
   const signinModal = document.getElementById('signin-modal');
   const closeSigninModal = document.getElementById('close-signin-modal');
@@ -371,7 +366,6 @@ function initEventListeners() {
     });
   }
 
-  // Category Pill Clicks
   const categoryPills = document.querySelectorAll('.category-item');
   categoryPills.forEach(pill => {
     pill.addEventListener('click', () => {
@@ -385,8 +379,7 @@ function initEventListeners() {
   });
 }
 
-// Select City from Modal
-window.selectCity = function(cityName) {
+window.selectCity = function (cityName) {
   const selectedLocation = document.getElementById('current-location-text');
   if (selectedLocation) {
     selectedLocation.innerText = `${cityName}, India`;
@@ -398,7 +391,6 @@ window.selectCity = function(cityName) {
   showToast(`Location updated to ${cityName}`);
 };
 
-// Toast Notification Helper
 function showToast(message) {
   let container = document.getElementById('toast-container');
   if (!container) {
