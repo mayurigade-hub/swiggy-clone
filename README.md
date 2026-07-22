@@ -11,7 +11,7 @@
 [![JavaScript](https://img.shields.io/badge/JavaScript-Vanilla-F7DF1E?style=flat-square&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 [![Font Awesome](https://img.shields.io/badge/Icons-Font%20Awesome-528DD7?style=flat-square&logo=fontawesome&logoColor=white)](https://fontawesome.com)
 
-[Getting Started](#getting-started) . [Project Structure](#project-structure) . [Tech Stack](#tech-stack)
+[Getting Started](#getting-started) . [Project Structure](#project-structure) . [Live Website](#live-website)
 
 </div>
 
@@ -24,21 +24,6 @@ Swiggy Clone is a front-end recreation of the Swiggy food delivery homepage expe
 It focuses on building a realistic, production-style user interface using only core web technologies. The project includes a bold Swiggy-inspired hero section, delivery location input, restaurant search, food and grocery category carousels, Dineout cards, restaurant filters, cart drawer, app download QR banner, city delivery sections, and a responsive footer.
 
 The UI is designed to work smoothly across desktop, tablet, and mobile screen sizes.
-
----
-
-<a name="tech-stack"></a>
-
-## Tech Stack
-
-| Layer | Technology |
-|---|---|
-| **Structure** | HTML5 |
-| **Styling** | CSS3, custom responsive media queries |
-| **Logic** | Vanilla JavaScript |
-| **Icons** | Font Awesome |
-| **Images** | Remote image assets from Swiggy, Unsplash, and QR Server |
-| **Layout** | CSS Grid, Flexbox, horizontal scroll containers |
 
 ---
 
@@ -96,6 +81,12 @@ cd swiggy_clone
 - Works across large desktop screens, tablets, mobile phones, and very narrow devices
 - Includes interactive search, filters, category selection, modals, cart state, and quantity controls
 - Clean single-page structure suitable for beginner-to-intermediate front-end portfolios
+
+---
+<a name = "live-website"></a> 
+
+Live website- 
+https://mayurigade-hub.github.io/swiggy-clone/
 
 ---
 
