@@ -366,7 +366,7 @@ function initEventListeners() {
     });
   }
 
-  const categoryPills = document.querySelectorAll('.category-item');
+  const categoryPills = document.querySelectorAll('.food-category-pill');
   categoryPills.forEach(pill => {
     pill.addEventListener('click', () => {
       const cat = pill.getAttribute('data-cat');

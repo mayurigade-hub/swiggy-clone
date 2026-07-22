@@ -27,6 +27,7 @@ body {
   color: var(--dark);
   background: #fff;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 a { text-decoration: none; color: inherit; }
@@ -40,12 +41,12 @@ input { font-family: inherit; }
    =========================== */
 .hero-section {
   background: var(--orange);
-  min-height: 100vh;
+  min-height: 100svh;
   height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0 30px 70px;
+  padding: 0 clamp(16px, 3vw, 30px) clamp(42px, 7vw, 70px);
   position: relative;
   overflow: hidden;
 }
@@ -68,7 +69,7 @@ input { font-family: inherit; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 38px 0 74px;
+  padding: clamp(22px, 4vw, 38px) 0 clamp(42px, 6vw, 74px);
   max-width: 1500px;
 }
 
@@ -144,23 +145,23 @@ input { font-family: inherit; }
 
 /* === Hero Heading === */
 .hero-heading {
-  font-size: clamp(42px, 3.45vw, 62px);
+  font-size: clamp(30px, 5vw, 62px);
   font-weight: 900;
   color: var(--white);
   line-height: 1.22;
   max-width: 1060px;
-  margin-bottom: 46px;
-  letter-spacing: -0.8px;
+  margin-bottom: clamp(28px, 4vw, 46px);
+  letter-spacing: 0;
 }
 
 /* === Input Bar (Location + Search) === */
 .hero-inputs-container {
   display: flex;
   align-items: stretch;
-  gap: 24px;
+  gap: clamp(12px, 2vw, 24px);
   width: 100%;
   max-width: 980px;
-  margin-bottom: 78px;
+  margin-bottom: clamp(34px, 6vw, 78px);
   background: transparent;
   border-radius: 0;
   overflow: visible;
@@ -171,8 +172,8 @@ input { font-family: inherit; }
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 0 22px;
-  height: 72px;
+  padding: 0 clamp(14px, 2vw, 22px);
+  height: clamp(58px, 7vw, 72px);
   background: var(--white);
   border: 1.5px solid rgba(2, 6, 12, 0.18);
   border-radius: 17px;
@@ -180,7 +181,8 @@ input { font-family: inherit; }
 }
 
 .location-box {
-  flex: 0 0 380px;
+  flex: 0 1 380px;
+  min-width: 0;
 }
 
 .search-box {
@@ -191,7 +193,7 @@ input { font-family: inherit; }
   border: none;
   outline: none;
   width: 100%;
-  font-size: 18px;
+  font-size: clamp(15px, 2vw, 18px);
   font-weight: 700;
   font-family: inherit;
   color: var(--dark);
@@ -222,8 +224,8 @@ input { font-family: inherit; }
 .feature-card {
   background: var(--white);
   border-radius: 22px;
-  padding: 32px 30px;
-  min-height: 250px;
+  padding: clamp(22px, 2.3vw, 32px) clamp(20px, 2.3vw, 30px);
+  min-height: clamp(210px, 18vw, 250px);
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -242,10 +244,10 @@ input { font-family: inherit; }
 .feature-card-content { display: flex; flex-direction: column; z-index: 2; }
 
 .feature-card-title {
-  font-size: 30px;
+  font-size: clamp(24px, 2.2vw, 30px);
   font-weight: 900;
   color: var(--dark);
-  letter-spacing: -0.5px;
+  letter-spacing: 0;
   line-height: 1.15;
   margin-bottom: 4px;
 }
@@ -287,8 +289,8 @@ input { font-family: inherit; }
 .feature-card:hover .feature-card-arrow { transform: scale(1.12); }
 
 .feature-card-img {
-  width: 160px;
-  height: 140px;
+  width: clamp(128px, 12vw, 160px);
+  height: clamp(112px, 10vw, 140px);
   object-fit: cover;
   border-radius: 42% 42% 18px 42%;
   position: absolute;
@@ -304,11 +306,11 @@ input { font-family: inherit; }
 .main-wrapper {
   max-width: 1480px;
   margin: 0 auto;
-  padding: 0 30px;
+  padding: 0 clamp(16px, 3vw, 30px);
 }
 
 .section-block {
-  padding: 52px 0;
+  padding: clamp(36px, 5vw, 52px) 0;
   border-bottom: 1px solid rgba(2, 6, 12, 0.08);
 }
 
@@ -320,10 +322,10 @@ input { font-family: inherit; }
 }
 
 .section-title {
-  font-size: 28px;
+  font-size: clamp(22px, 3vw, 28px);
   font-weight: 800;
   color: var(--dark);
-  letter-spacing: -0.3px;
+  letter-spacing: 0;
 }
 
 .section-arrow-nav { display: flex; gap: 12px; }
@@ -626,7 +628,7 @@ input { font-family: inherit; }
 
 .restaurant-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
   gap: 34px 26px;
 }
 
@@ -639,7 +641,8 @@ input { font-family: inherit; }
 
 .card-banner {
   width: 100%;
-  height: 205px;
+  aspect-ratio: 1.38 / 1;
+  height: auto;
   border-radius: var(--radius);
   overflow: hidden;
   position: relative;
@@ -793,11 +796,11 @@ input { font-family: inherit; }
   margin: 40px 0;
   background: #1c1c1c;
   border-radius: 20px;
-  padding: 48px 68px;
+  padding: clamp(28px, 4vw, 48px) clamp(20px, 5vw, 68px);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 260px;
+  gap: clamp(36px, 10vw, 260px);
   position: relative;
   overflow: hidden;
 }
@@ -817,12 +820,12 @@ input { font-family: inherit; }
 }
 
 .app-qr-title {
-  font-size: 38px;
+  font-size: clamp(28px, 4vw, 38px);
   font-weight: 900;
   color: #fff;
   margin-bottom: 14px;
   line-height: 1.2;
-  letter-spacing: -0.8px;
+  letter-spacing: 0;
   max-width: 450px;
 }
 
@@ -872,7 +875,7 @@ input { font-family: inherit; }
    =========================== */
 .cities-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 10px;
 }
 
@@ -1233,7 +1236,7 @@ input { font-family: inherit; }
    RESPONSIVE
    =========================== */
 @media (max-width: 1024px) {
-  .hero-section { height: auto; min-height: 100vh; padding-bottom: 56px; }
+  .hero-section { height: auto; min-height: 100svh; padding-bottom: 56px; }
   .hero-navbar { padding: 30px 0 58px; }
   .swiggy-logo-img { width: 145px; }
   .hero-nav-right { gap: 18px; }
@@ -1269,6 +1272,28 @@ input { font-family: inherit; }
   .footer-grid-container { grid-template-columns: repeat(3, 1fr); }
 }
 
+@media (max-width: 900px) {
+  .hero-section { justify-content: flex-start; }
+  .hero-navbar { flex-direction: column; align-items: center; text-align: center; }
+  .hero-nav-right { justify-content: center; }
+  .hero-nav-link { display: none; }
+  .hero-heading { max-width: 720px; line-height: 1.18; }
+  .hero-inputs-container { flex-direction: column; max-width: 560px; }
+  .location-box { flex-basis: auto; }
+  .hero-cards-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+  .feature-card { min-height: 220px; }
+  .feature-card-sub { font-size: 13px; }
+  .feature-card-tag { font-size: 13px; margin-bottom: 44px; }
+  .food-categories-container { gap: 26px 28px; }
+  .food-category-pill { width: 128px; }
+  .food-category-pill img { width: 124px; height: 124px; }
+  .instamart-card { width: 148px; }
+  .instamart-card-img-box { width: 142px; height: 142px; }
+  .app-qr-banner { flex-direction: column; text-align: center; }
+  .app-qr-left { flex: 0 1 auto; }
+  .app-logo-wrap { justify-content: center; }
+}
+
 @media (max-width: 768px) {
   .hero-navbar { align-items: flex-start; gap: 20px; padding: 24px 0 48px; }
   .swiggy-logo-img { width: 128px; }
@@ -1296,17 +1321,110 @@ input { font-family: inherit; }
   .dineout-card-img { height: 205px; }
 }
 
+@media (max-width: 640px) {
+  .hero-section { min-height: auto; }
+  .hero-navbar { padding-bottom: 34px; }
+  .hero-nav-right { width: 100%; }
+  .hero-btn-app,
+  .hero-btn-signin { flex: 1 1 140px; justify-content: center; }
+  .hero-heading { font-size: clamp(28px, 9vw, 38px); }
+  .hero-input-box {
+    min-height: 66px;
+    padding: 0 18px;
+  }
+  .hero-input {
+    font-size: 17px;
+    line-height: 1.35;
+  }
+  .input-icon-left,
+  .input-icon-right { font-size: 24px; }
+  .hero-cards-grid { grid-template-columns: 1fr; width: min(100%, 430px); }
+  .section-header { align-items: flex-start; gap: 14px; }
+  .section-arrow-nav { display: none; }
+  .filter-toolbar {
+    margin-left: -16px;
+    margin-right: -16px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .restaurant-grid { gap: 28px; }
+  .card-action-bar { align-items: flex-start; flex-direction: column; gap: 12px; }
+  .add-btn,
+  .qty-control { width: 100%; justify-content: center; }
+  .cart-drawer {
+    right: -100%;
+    width: min(100%, 390px);
+  }
+  .modal-overlay { align-items: flex-end; padding: 16px; }
+  .modal-box {
+    max-width: none;
+    max-height: calc(100svh - 32px);
+    overflow-y: auto;
+    padding: 28px 22px;
+  }
+  .toast-container {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+  }
+}
+
 @media (max-width: 480px) {
+  .hero-navbar { gap: 16px; }
+  .swiggy-logo-img { width: 116px; }
+  .hero-btn-app,
+  .hero-btn-signin {
+    flex-basis: auto;
+    min-height: 46px;
+    padding: 10px 12px;
+  }
+  .hero-btn-app i { display: none; }
+  .hero-input-box {
+    min-height: 64px;
+    border-radius: 16px;
+  }
+  .feature-card {
+    min-height: 190px;
+    border-radius: 18px;
+  }
+  .feature-card-title { font-size: 23px; }
+  .feature-card-sub { font-size: 12px; }
+  .feature-card-img { width: 122px; height: 104px; }
+  .food-category-pill { width: 110px; }
+  .food-category-pill img { width: 104px; height: 104px; border-width: 4px; }
+  .food-category-pill span,
+  .instamart-card span { font-size: 14px; }
+  .instamart-card { width: 126px; }
+  .instamart-card-img-box { width: 120px; height: 120px; }
+  .dineout-card { width: min(320px, 86vw); }
+  .dineout-card-img { height: 178px; }
+  .dineout-title { font-size: 18px; }
+  .dineout-tag { font-size: 12px; }
   .restaurant-grid { grid-template-columns: 1fr; }
   .card-banner { height: 200px; }
   .cities-grid { grid-template-columns: 1fr; }
   .footer-app-bar { padding: 28px 18px; font-size: 20px; }
   .app-store-pill { width: 100%; justify-content: center; }
   .cart-drawer { width: 100%; }
+  .footer-grid-container { grid-template-columns: 1fr; }
+  .footer-app-btns { width: 100%; }
+  .app-qr-banner { border-radius: 16px; }
+  .qr-code-img { width: 150px; height: 150px; }
 }
 
-.app-swiggy-logo-img {
-  width: 150px;
-  height: auto;
-  display: block;
+@media (max-width: 360px) {
+  .hero-section { padding-left: 12px; padding-right: 12px; }
+  .main-wrapper { padding-left: 12px; padding-right: 12px; }
+  .hero-heading { font-size: 26px; }
+  .hero-nav-right { gap: 8px; }
+  .hero-btn-app,
+  .hero-btn-signin { font-size: 13px; }
+  .hero-input { font-size: 13px; }
+  .input-icon-left,
+  .input-icon-right { font-size: 18px; }
+  .feature-card { padding: 18px; }
+  .feature-card-img { opacity: 0.9; }
+  .card-banner { height: 176px; }
+  .app-store-pill strong { font-size: 18px; }
+  .app-store-pill { font-size: 13px; padding: 10px 14px; }
 }
