@@ -11,7 +11,7 @@
 [![JavaScript](https://img.shields.io/badge/JavaScript-Vanilla-F7DF1E?style=flat-square&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 [![Font Awesome](https://img.shields.io/badge/Icons-Font%20Awesome-528DD7?style=flat-square&logo=fontawesome&logoColor=white)](https://fontawesome.com)
 
-[Getting Started](#getting-started) . [Features](#features) . [Screenshots](#screenshots) . [Project Structure](#project-structure) . [Tech Stack](#tech-stack)
+[Getting Started](#getting-started) . [Screenshots](#screenshots) . [Project Structure](#project-structure) . [Tech Stack](#tech-stack)
 
 </div>
 
@@ -63,29 +63,6 @@ The UI is designed to work smoothly across desktop, tablet, and mobile screen si
 > Fully responsive mobile layout with stacked hero inputs, optimized service cards, scrollable category rows, and mobile-safe modals.
 
 ![Mobile View](./assets/Mobile-View.png)
-
----
-
-<a name="features"></a>
-
-## Features
-
-| Feature | Description |
-|---|---|
-| **Responsive Hero** | Swiggy-inspired landing section that adapts across desktop, tablet, and mobile |
-| **Location Selector** | Clickable delivery location field with a modal and popular city chips |
-| **Restaurant Search** | Live search across restaurant name, cuisine, and category |
-| **Food Categories** | Scrollable two-row food category section with image-based category cards |
-| **Instamart Section** | Grocery category carousel with square cards and clean visual hierarchy |
-| **Dineout Cards** | Horizontally scrollable restaurant deal cards with ratings and offer tags |
-| **Restaurant Filters** | Filter restaurants by rating, fast delivery, pure veg, and budget |
-| **Cart Drawer** | Add items to cart, update quantity, remove items, and view billing summary |
-| **Toast Notifications** | User feedback for cart and location actions |
-| **Sign-In Modal** | Phone number based sign-in modal UI |
-| **App QR Banner** | Dark app download banner with QR code mockup |
-| **City Delivery Grid** | Food and grocery delivery city links in responsive grids |
-| **Responsive Footer** | Multi-column footer that collapses cleanly on smaller screens |
-| **Mobile-First Fixes** | Optimized input heights, card sizing, modals, drawer width, and narrow-phone breakpoints |
 
 ---
 
