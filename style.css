@@ -1304,3 +1304,9 @@ input { font-family: inherit; }
   .app-store-pill { width: 100%; justify-content: center; }
   .cart-drawer { width: 100%; }
 }
+
+.app-swiggy-logo-img {
+  width: 150px;
+  height: auto;
+  display: block;
+}
