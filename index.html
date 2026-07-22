@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Swiggy Clone - Order food & groceries. Discover best restaurants. Swiggy it!">
+  <title>Order Food & Groceries. Discover best restaurants. Swiggy it!</title>
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="nav-left">
+        <a href="#" class="logo-container">
+          <div class="swiggy-logo-icon">S</div>
+          <span class="logo-text">swiggy</span>
+        </a>
+
+        <div class="location-picker" id="location-picker-btn">
+          <span class="location-type">Other</span>
+          <span class="location-name" id="current-location-text">Bangalore, Karnataka, India</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+      </div>
+
+      <ul class="nav-right">
+        <li>
+          <a href="#search-section" class="nav-item">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <span>Search</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-item">
+            <i class="fa-solid fa-percent"></i>
+            <span>Offers</span>
+            <span class="badge-offer">NEW</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-item">
+            <i class="fa-solid fa-life-ring"></i>
+            <span>Help</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-item" id="signin-trigger">
+            <i class="fa-regular fa-user"></i>
+            <span>Sign In</span>
+          </a>
+        </li>
+        <li>
+          <div class="nav-item" id="cart-nav-trigger">
+            <div class="cart-icon-wrapper">
+              <i class="fa-solid fa-bag-shopping" style="font-size: 20px;"></i>
+              <span class="cart-badge" id="cart-badge">0</span>
+            </div>
+            <span>Cart</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-bg-pattern"></div>
+    <div class="hero-container">
+      <h1 class="hero-heading">Order food & groceries. Discover best restaurants. Swiggy it!</h1>
+      <p class="hero-subheading">Delivering food, groceries & essential packages across 500+ cities in India</p>
+
+      <!-- Services Cards Grid -->
+      <div class="hero-services-grid">
+        <div class="service-card" onclick="document.getElementById('restaurant-grid').scrollIntoView({behavior:'smooth'})">
+          <span class="service-card-tag tag-food">FOOD DELIVERY</span>
+          <h2 class="service-title">FOOD DELIVERY</h2>
+          <p class="service-desc">FROM RESTAURANTS</p>
+          <div class="service-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&auto=format&fit=crop&q=80" alt="Food Delivery" />
+          </div>
+          <div class="service-card-btn">UPTO 60% OFF <i class="fa-solid fa-arrow-right"></i></div>
+        </div>
+
+        <div class="service-card" onclick="alert('Instamart Grocery: Select items to order instantly in 10 mins!')">
+          <span class="service-card-tag tag-instamart">INSTAMART</span>
+          <h2 class="service-title">INSTAMART</h2>
+          <p class="service-desc">INSTANT GROCERIES</p>
+          <div class="service-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=500&auto=format&fit=crop&q=80" alt="Instamart Groceries" />
+          </div>
+          <div class="service-card-btn">DELIVERY IN 10 MINS <i class="fa-solid fa-arrow-right"></i></div>
+        </div>
+
+        <div class="service-card" onclick="alert('Swiggy Dineout: Flat 50% off on your restaurant bills!')">
+          <span class="service-card-tag tag-dineout">DINEOUT</span>
+          <h2 class="service-title">DINEOUT</h2>
+          <p class="service-desc">EAT OUT & SAVE</p>
+          <div class="service-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=500&auto=format&fit=crop&q=80" alt="Dineout Restaurants" />
+          </div>
+          <div class="service-card-btn">FLAT 50% OFF BILLS <i class="fa-solid fa-arrow-right"></i></div>
+        </div>
+
+        <div class="service-card" onclick="alert('Swiggy Genie: Pickup & Drop items anywhere in the city!')">
+          <span class="service-card-tag tag-genie">GENIE</span>
+          <h2 class="service-title">GENIE</h2>
+          <p class="service-desc">PICKUP & DROP</p>
+          <div class="service-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1526367790999-0150786686a2?w=500&auto=format&fit=crop&q=80" alt="Genie Delivery" />
+          </div>
+          <div class="service-card-btn">SEND ANYTHING <i class="fa-solid fa-arrow-right"></i></div>
+        </div>
+      </div>
+
+      <!-- Quick Search Bar -->
+      <div class="hero-search-box" id="search-section">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="search-input" class="hero-search-input" placeholder="Search for restaurant, item or dish..." />
+        <button class="hero-search-btn">Search</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Body -->
+  <main class="main-wrapper">
+    <!-- Category Carousel Section -->
+    <section>
+      <div class="section-header">
+        <h2 class="section-title">What's on your mind?</h2>
+        <div class="section-arrow-nav">
+          <button class="arrow-btn" onclick="document.getElementById('categories-list').scrollBy({left:-300, behavior:'smooth'})"><i class="fa-solid fa-arrow-left"></i></button>
+          <button class="arrow-btn" onclick="document.getElementById('categories-list').scrollBy({left:300, behavior:'smooth'})"><i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+      </div>
+
+      <div class="categories-container" id="categories-list">
+        <div class="category-item" data-cat="biryani">
+          <div class="category-img-box">
+            <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=300&auto=format&fit=crop&q=80" alt="Biryani" />
+          </div>
+          <span class="category-name">Biryani</span>
+        </div>
+
+        <div class="category-item" data-cat="pizza">
+          <div class="category-img-box">
+            <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=300&auto=format&fit=crop&q=80" alt="Pizza" />
+          </div>
+          <span class="category-name">Pizza</span>
+        </div>
+
+        <div class="category-item" data-cat="burger">
+          <div class="category-img-box">
+            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=300&auto=format&fit=crop&q=80" alt="Burger" />
+          </div>
+          <span class="category-name">Burgers</span>
+        </div>
+
+        <div class="category-item" data-cat="north-indian">
+          <div class="category-img-box">
+            <img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=300&auto=format&fit=crop&q=80" alt="North Indian" />
+          </div>
+          <span class="category-name">North Indian</span>
+        </div>
+
+        <div class="category-item" data-cat="dosa">
+          <div class="category-img-box">
+            <img src="https://images.unsplash.com/photo-1668236543090-82eba5ee5976?w=300&auto=format&fit=crop&q=80" alt="Dosa" />
+          </div>
+          <span class="category-name">Dosa</span>
+        </div>
+
+        <div class="category-item" data-cat="cakes">
+          <div class="category-img-box">
+            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=300&auto=format&fit=crop&q=80" alt="Desserts & Cakes" />
+          </div>
+          <span class="category-name">Cakes</span>
+        </div>
+
+        <div class="category-item" data-cat="chinese">
+          <div class="category-img-box">
+            <img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?w=300&auto=format&fit=crop&q=80" alt="Chinese" />
+          </div>
+          <span class="category-name">Chinese</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Restaurants Listing Section -->
+    <section>
+      <div class="section-header">
+        <h2 class="section-title">Top restaurant chains in Bangalore</h2>
+      </div>
+
+      <!-- Filter Bar -->
+      <div class="filter-toolbar">
+        <button class="filter-btn active" data-filter="all">All Restaurants</button>
+        <button class="filter-btn" data-filter="rating"><i class="fa-solid fa-star"></i> Ratings 4.4+</button>
+        <button class="filter-btn" data-filter="fast"><i class="fa-solid fa-bolt"></i> Fast Delivery (≤25 mins)</button>
+        <button class="filter-btn" data-filter="veg"><i class="fa-solid fa-leaf"></i> Pure Veg</button>
+        <button class="filter-btn" data-filter="budget">Less than ₹250</button>
+      </div>
+
+      <!-- Restaurant Dynamic Grid -->
+      <div class="restaurant-grid" id="restaurant-grid">
+        <!-- Injected dynamically via script.js -->
+      </div>
+    </section>
+
+    <!-- App Banner Download Section -->
+    <section class="app-banner-section">
+      <div class="app-banner-content">
+        <h2 class="app-banner-title">For better experience, download the Swiggy app now</h2>
+        <p class="app-banner-subtitle">Get food delivery, Instamart grocery delivery, and Dineout reservations at your fingertips.</p>
+        <div class="store-buttons">
+          <a href="#" class="store-btn">
+            <i class="fa-brands fa-google-play"></i>
+            <div class="store-btn-text">
+              <span>GET IT ON</span>
+              <strong>Google Play</strong>
+            </div>
+          </a>
+          <a href="#" class="store-btn">
+            <i class="fa-brands fa-apple"></i>
+            <div class="store-btn-text">
+              <span>Download on the</span>
+              <strong>App Store</strong>
+            </div>
+          </a>
+        </div>
+      </div>
+      <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&auto=format&fit=crop&q=80" alt="Swiggy App" class="app-mockup-img" />
+    </section>
+  </main>
+
+  <!-- Slide-out Cart Drawer -->
+  <div class="cart-drawer-overlay" id="cart-drawer-overlay"></div>
+  <aside class="cart-drawer" id="cart-drawer">
+    <div class="cart-header">
+      <h2 class="cart-header-title"><i class="fa-solid fa-bag-shopping" style="color: var(--primary-orange); margin-right: 8px;"></i> Your Cart</h2>
+      <button class="close-drawer-btn" id="close-cart-btn"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    
+    <div class="cart-body-items" id="cart-items-container">
+      <div class="empty-cart-view">
+        <i class="fa-solid fa-basket-shopping"></i>
+        <h3>Your cart is empty</h3>
+        <p style="color: var(--text-muted); font-size: 14px;">Good food is always cooking! Go ahead, order some yummy items from the menu.</p>
+      </div>
+    </div>
+
+    <div class="cart-footer">
+      <div class="bill-row">
+        <span>Item Subtotal</span>
+        <span id="cart-subtotal">₹0</span>
+      </div>
+      <div class="bill-row">
+        <span>Delivery Fee & Distance</span>
+        <span>₹35</span>
+      </div>
+      <div class="bill-row">
+        <span>GST & Restaurant Charges</span>
+        <span>5%</span>
+      </div>
+      <div class="bill-row total">
+        <span>To Pay</span>
+        <span id="cart-total">₹0</span>
+      </div>
+      <button class="checkout-btn" onclick="alert('Order Placed Successfully! Your delicious food is on the way 🎉')">
+        <span>CHECKOUT</span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Location Modal -->
+  <div class="modal-overlay" id="location-modal">
+    <div class="modal-box">
+      <button class="modal-close-btn" id="close-location-modal"><i class="fa-solid fa-xmark"></i></button>
+      <h2 class="modal-title">Select Delivery Location</h2>
+      <input type="text" class="modal-input" placeholder="Search for area, street name..." />
+      <button class="modal-btn" onclick="selectCity('Bangalore Central')"><i class="fa-solid fa-location-crosshairs"></i> Get Current Location</button>
+      
+      <p style="margin-top: 20px; font-weight: 700; font-size: 14px;">Popular Cities</p>
+      <div class="city-chips">
+        <div class="city-chip" onclick="selectCity('Bangalore')">Bangalore</div>
+        <div class="city-chip" onclick="selectCity('Mumbai')">Mumbai</div>
+        <div class="city-chip" onclick="selectCity('Delhi NCR')">Delhi NCR</div>
+        <div class="city-chip" onclick="selectCity('Hyderabad')">Hyderabad</div>
+        <div class="city-chip" onclick="selectCity('Pune')">Pune</div>
+        <div class="city-chip" onclick="selectCity('Chennai')">Chennai</div>
+        <div class="city-chip" onclick="selectCity('Kolkata')">Kolkata</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sign In Modal -->
+  <div class="modal-overlay" id="signin-modal">
+    <div class="modal-box">
+      <button class="modal-close-btn" id="close-signin-modal"><i class="fa-solid fa-xmark"></i></button>
+      <h2 class="modal-title">Sign In / Sign Up</h2>
+      <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">Enter your mobile number to receive an OTP</p>
+      <input type="tel" class="modal-input" placeholder="Phone Number (+91)" maxlength="10" />
+      <button class="modal-btn" onclick="alert('OTP sent to your phone number!'); document.getElementById('signin-modal').classList.remove('active');">LOGIN WITH OTP</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-brand">
+        <a href="#" class="logo-container">
+          <div class="swiggy-logo-icon">S</div>
+          <span class="logo-text">swiggy</span>
+        </a>
+        <p>© 2026 Swiggy Limited</p>
+      </div>
+
+      <div>
+        <h4 class="footer-col-title">Company</h4>
+        <ul class="footer-links">
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Swiggy Corporate</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Team</a></li>
+          <li><a href="#">Swiggy One</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-col-title">Contact us</h4>
+        <ul class="footer-links">
+          <li><a href="#">Help & Support</a></li>
+          <li><a href="#">Partner with us</a></li>
+          <li><a href="#">Ride with us</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-col-title">Available in</h4>
+        <ul class="footer-links">
+          <li><a href="#">Bangalore</a></li>
+          <li><a href="#">Gurgaon</a></li>
+          <li><a href="#">Hyderabad</a></li>
+          <li><a href="#">Delhi</a></li>
+          <li><a href="#">Mumbai</a></li>
+          <li><a href="#">Pune</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>For better experience, download the Swiggy app today</p>
+      <div style="display: flex; gap: 16px;">
+        <i class="fa-brands fa-facebook" style="font-size: 20px; cursor: pointer;"></i>
+        <i class="fa-brands fa-instagram" style="font-size: 20px; cursor: pointer;"></i>
+        <i class="fa-brands fa-twitter" style="font-size: 20px; cursor: pointer;"></i>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Link JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>

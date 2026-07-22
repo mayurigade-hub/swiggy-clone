@@ -1,5 +1,4 @@
-// Swiggy Web Clone Application Logic (scrpit.js wrapper)
-// Imports / mirror of script.js logic
+// Swiggy Web Clone Application Logic
 
 // Mock Restaurant Dataset
 const RESTAURANT_DATA = [
@@ -109,14 +108,17 @@ const RESTAURANT_DATA = [
   }
 ];
 
-let cartState = {};
+// App State
+let cartState = {}; // { [restaurantId]: { item, count } }
 let activeFilter = 'all';
 
+// DOM Elements
 document.addEventListener('DOMContentLoaded', () => {
   renderRestaurants(RESTAURANT_DATA);
   initEventListeners();
 });
 
+// Render Restaurants in Grid
 function renderRestaurants(restaurants) {
   const grid = document.getElementById('restaurant-grid');
   if (!grid) return;
@@ -173,6 +175,7 @@ function renderRestaurants(restaurants) {
   }).join('');
 }
 
+// Cart State Operations
 window.addToCart = function(resId) {
   const item = RESTAURANT_DATA.find(r => r.id === resId);
   if (!item) return;
@@ -211,6 +214,7 @@ function updateCartUI() {
 
   let totalCount = 0;
   let subtotal = 0;
+
   let itemsHtml = '';
 
   Object.keys(cartState).forEach(id => {
@@ -258,6 +262,7 @@ function updateCartUI() {
   if (cartTotalEl) cartTotalEl.innerText = `₹${grandTotal}`;
 }
 
+// Filter Operations
 function getFilteredRestaurants() {
   let list = [...RESTAURANT_DATA];
 
@@ -284,7 +289,9 @@ function getFilteredRestaurants() {
   return list;
 }
 
+// Event Listeners Init
 function initEventListeners() {
+  // Search Input Handler
   const searchInput = document.getElementById('search-input');
   if (searchInput) {
     searchInput.addEventListener('input', () => {
@@ -292,6 +299,7 @@ function initEventListeners() {
     });
   }
 
+  // Filter Buttons
   const filterBtns = document.querySelectorAll('.filter-btn');
   filterBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
@@ -303,6 +311,7 @@ function initEventListeners() {
     });
   });
 
+  // Cart Drawer Toggles
   const cartTrigger = document.getElementById('cart-nav-trigger');
   const cartDrawerOverlay = document.getElementById('cart-drawer-overlay');
   const cartDrawer = document.getElementById('cart-drawer');
@@ -329,6 +338,7 @@ function initEventListeners() {
     });
   }
 
+  // Location Modal Toggles
   const locationPicker = document.getElementById('location-picker-btn');
   const locationModal = document.getElementById('location-modal');
   const closeLocationModal = document.getElementById('close-location-modal');
@@ -344,6 +354,7 @@ function initEventListeners() {
     });
   }
 
+  // Signin Modal Toggles
   const signinTrigger = document.getElementById('signin-trigger');
   const signinModal = document.getElementById('signin-modal');
   const closeSigninModal = document.getElementById('close-signin-modal');
@@ -360,6 +371,7 @@ function initEventListeners() {
     });
   }
 
+  // Category Pill Clicks
   const categoryPills = document.querySelectorAll('.category-item');
   categoryPills.forEach(pill => {
     pill.addEventListener('click', () => {
@@ -373,6 +385,7 @@ function initEventListeners() {
   });
 }
 
+// Select City from Modal
 window.selectCity = function(cityName) {
   const selectedLocation = document.getElementById('current-location-text');
   if (selectedLocation) {
@@ -385,6 +398,7 @@ window.selectCity = function(cityName) {
   showToast(`Location updated to ${cityName}`);
 };
 
+// Toast Notification Helper
 function showToast(message) {
   let container = document.getElementById('toast-container');
   if (!container) {
