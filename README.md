@@ -11,7 +11,7 @@
 [![JavaScript](https://img.shields.io/badge/JavaScript-Vanilla-F7DF1E?style=flat-square&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 [![Font Awesome](https://img.shields.io/badge/Icons-Font%20Awesome-528DD7?style=flat-square&logo=fontawesome&logoColor=white)](https://fontawesome.com)
 
-[Getting Started](#getting-started) . [Screenshots](#screenshots) . [Project Structure](#project-structure) . [Tech Stack](#tech-stack)
+[Getting Started](#getting-started) . [Project Structure](#project-structure) . [Tech Stack](#tech-stack)
 
 </div>
 
@@ -24,45 +24,6 @@ Swiggy Clone is a front-end recreation of the Swiggy food delivery homepage expe
 It focuses on building a realistic, production-style user interface using only core web technologies. The project includes a bold Swiggy-inspired hero section, delivery location input, restaurant search, food and grocery category carousels, Dineout cards, restaurant filters, cart drawer, app download QR banner, city delivery sections, and a responsive footer.
 
 The UI is designed to work smoothly across desktop, tablet, and mobile screen sizes.
-
----
-
-<a name="screenshots"></a>
-
-## Screenshots
-
-### Hero Section
-> Swiggy-style orange hero area with navigation, delivery location selector, restaurant search input, and three service cards for Food Delivery, Instamart, and Dineout.
-
-![Hero Section](./assets/Hero-Section.png)
-
----
-
-### Food Categories
-> Horizontal food category scroller with circular image cards for cuisines like North Indian, Pizza, Chinese, Burger, Biryani, Desserts, and more.
-
-![Food Categories](./assets/Food-Categories.png)
-
----
-
-### Restaurant Listing
-> Responsive restaurant catalog with search, filter chips, ratings, delivery time, offers, veg badge, and add-to-cart actions.
-
-![Restaurant Listing](./assets/Restaurant-Listing.png)
-
----
-
-### Cart Drawer
-> Slide-out cart drawer with quantity controls, subtotal, delivery fee, tax calculation, and checkout button.
-
-![Cart Drawer](./assets/Cart-Drawer.png)
-
----
-
-### Mobile View
-> Fully responsive mobile layout with stacked hero inputs, optimized service cards, scrollable category rows, and mobile-safe modals.
-
-![Mobile View](./assets/Mobile-View.png)
 
 ---
 
