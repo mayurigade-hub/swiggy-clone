@@ -19,18 +19,13 @@
       <!-- Navbar -->
       <nav class="hero-navbar">
         <a href="#" class="logo-container">
-          <div class="swiggy-logo-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 17H11V15H13V17ZM13 13H11V7H13V13Z" fill="#ff5200"/>
-            </svg>
-          </div>
-          <span class="logo-text-white">Swiggy</span>
+          <img src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/portal/static-assets/images/swiggy_logo_white.png" alt="Swiggy" class="swiggy-logo-img" />
         </a>
 
         <div class="hero-nav-right">
           <a href="#" class="hero-nav-link">Swiggy Corporate</a>
           <a href="#" class="hero-nav-link">Partner with us</a>
-          <a href="#" class="hero-btn-app">Get the App <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+          <a href="#" class="hero-btn-app">Get the App <i class="fa-solid fa-arrow-up-right"></i></a>
           <a href="#" class="hero-btn-signin" id="signin-trigger">Sign in</a>
         </div>
       </nav>
@@ -100,8 +95,8 @@
       <div class="section-header">
         <h2 class="section-title">Order our best food options</h2>
         <div class="section-arrow-nav">
-          <button class="arrow-btn" onclick="document.getElementById('food-options-grid').scrollBy({left:-400, behavior:'smooth'})"><i class="fa-solid fa-arrow-left"></i></button>
-          <button class="arrow-btn" onclick="document.getElementById('food-options-grid').scrollBy({left:400, behavior:'smooth'})"><i class="fa-solid fa-arrow-right"></i></button>
+          <button class="arrow-btn" onclick="document.getElementById('food-options-grid').scrollBy({left:-650, behavior:'smooth'})"><i class="fa-solid fa-arrow-left"></i></button>
+          <button class="arrow-btn" onclick="document.getElementById('food-options-grid').scrollBy({left:650, behavior:'smooth'})"><i class="fa-solid fa-arrow-right"></i></button>
         </div>
       </div>
 
@@ -178,7 +173,7 @@
           <span>Pastry</span>
         </div>
         <div class="food-category-pill" data-cat="pizza">
-          <img src="https://images.unsplash.com/photo-1555949258-eb67b2808067?w=200&auto=format&fit=crop&q=80" alt="Pasta" />
+          <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=240&auto=format&fit=crop&q=85" alt="Pasta" />
           <span>Pasta</span>
         </div>
         <div class="food-category-pill" data-cat="dosa">
@@ -197,8 +192,8 @@
       <div class="section-header">
         <h2 class="section-title">Shop groceries on Instamart</h2>
         <div class="section-arrow-nav">
-          <button class="arrow-btn" onclick="document.getElementById('instamart-grid').scrollBy({left:-400, behavior:'smooth'})"><i class="fa-solid fa-arrow-left"></i></button>
-          <button class="arrow-btn" onclick="document.getElementById('instamart-grid').scrollBy({left:400, behavior:'smooth'})"><i class="fa-solid fa-arrow-right"></i></button>
+          <button class="arrow-btn" onclick="document.getElementById('instamart-grid').scrollBy({left:-650, behavior:'smooth'})"><i class="fa-solid fa-arrow-left"></i></button>
+          <button class="arrow-btn" onclick="document.getElementById('instamart-grid').scrollBy({left:650, behavior:'smooth'})"><i class="fa-solid fa-arrow-right"></i></button>
         </div>
       </div>
 
@@ -277,8 +272,8 @@
       <div class="section-header">
         <h2 class="section-title">Discover best restaurants on Dineout</h2>
         <div class="section-arrow-nav">
-          <button class="arrow-btn" onclick="document.getElementById('dineout-grid').scrollBy({left:-400, behavior:'smooth'})"><i class="fa-solid fa-arrow-left"></i></button>
-          <button class="arrow-btn" onclick="document.getElementById('dineout-grid').scrollBy({left:400, behavior:'smooth'})"><i class="fa-solid fa-arrow-right"></i></button>
+          <button class="arrow-btn" onclick="document.getElementById('dineout-grid').scrollBy({left:-650, behavior:'smooth'})"><i class="fa-solid fa-arrow-left"></i></button>
+          <button class="arrow-btn" onclick="document.getElementById('dineout-grid').scrollBy({left:650, behavior:'smooth'})"><i class="fa-solid fa-arrow-right"></i></button>
         </div>
       </div>
 
@@ -387,14 +382,12 @@
     <!-- 4. GET THE SWIGGY APP NOW BANNER (SCREENSHOT 3) -->
     <section class="app-qr-banner">
       <div class="app-qr-left">
-        <div class="logo-container" style="margin-bottom: 20px;">
-          <div class="swiggy-logo-icon" style="background:#ff5200;">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 17H11V15H13V17ZM13 13H11V7H13V13Z" fill="#ffffff"/>
-            </svg>
-          </div>
-          <span class="logo-text-white" style="color:#ffffff;">Swiggy</span>
-        </div>
+        <a href="#" class="logo-container app-logo-wrap" style="margin-bottom: 20px;">
+          <span class="app-logo-mark" aria-hidden="true">
+            <i class="fa-solid fa-bolt"></i>
+          </span>
+          <span class="app-logo-word">Swiggy</span>
+        </a>
         <h2 class="app-qr-title">Get the Swiggy App now!</h2>
         <p class="app-qr-subtitle">For best offers and discounts curated specially for you.</p>
       </div>
@@ -403,22 +396,11 @@
         <!-- Mockup Smartphone with QR Code -->
         <div class="phone-qr-frame">
           <div class="qr-box">
-            <!-- Inline SVG QR Code representation -->
-            <svg width="140" height="140" viewBox="0 0 100 100" fill="black">
-              <rect x="0" y="0" width="30" height="30" fill="black"/>
-              <rect x="5" y="5" width="20" height="20" fill="white"/>
-              <rect x="10" y="10" width="10" height="10" fill="black"/>
-              <rect x="70" y="0" width="30" height="30" fill="black"/>
-              <rect x="75" y="5" width="20" height="20" fill="white"/>
-              <rect x="80" y="10" width="10" height="10" fill="black"/>
-              <rect x="0" y="70" width="30" height="30" fill="black"/>
-              <rect x="5" y="75" width="20" height="20" fill="white"/>
-              <rect x="10" y="80" width="10" height="10" fill="black"/>
-              <rect x="40" y="10" width="20" height="10" fill="black"/>
-              <rect x="40" y="40" width="20" height="20" fill="black"/>
-              <rect x="70" y="50" width="20" height="30" fill="black"/>
-              <rect x="10" y="40" width="20" height="10" fill="black"/>
-            </svg>
+            <img
+              src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&margin=8&data=https%3A%2F%2Fwww.swiggy.com%2Fapp"
+              alt="QR code to download the Swiggy app"
+              class="qr-code-img"
+            />
             <span class="qr-label">Scan to download</span>
           </div>
         </div>
@@ -468,14 +450,9 @@
     <div class="footer-grid-container">
       <!-- Column 1: Brand -->
       <div class="footer-col-brand">
-        <div class="logo-container" style="margin-bottom: 12px;">
-          <div class="swiggy-logo-icon" style="background:#ff5200;">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 17H11V15H13V17ZM13 13H11V7H13V13Z" fill="#ffffff"/>
-            </svg>
-          </div>
-          <span class="logo-text-white" style="color:#ff5200;">Swiggy</span>
-        </div>
+        <a href="#" class="logo-container footer-logo-wrap" style="margin-bottom: 12px;">
+          <img src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/portal/static-assets/images/swiggy_logo_white.png" alt="Swiggy" class="footer-swiggy-logo-img" />
+        </a>
         <p class="copyright-text">© 2026 Swiggy Limited</p>
       </div>
 

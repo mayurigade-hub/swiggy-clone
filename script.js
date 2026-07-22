@@ -382,7 +382,7 @@ function initEventListeners() {
 window.selectCity = function (cityName) {
   const selectedLocation = document.getElementById('current-location-text');
   if (selectedLocation) {
-    selectedLocation.innerText = `${cityName}, India`;
+    selectedLocation.value = `${cityName}, India`;
   }
   const locationModal = document.getElementById('location-modal');
   if (locationModal) {
